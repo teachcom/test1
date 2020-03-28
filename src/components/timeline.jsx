@@ -1,34 +1,53 @@
 import React, { Component } from "react";
 import "./../App.css";
 import Tabletop from "tabletop";
-import ImageMapper from 'react-image-mapper';
-import Introduction from './introduction'
+import Timelinerender from "./timelinerender";
 
+var send_data = [];
+var year = '';
 export default class Timeline extends Component {
   constructor() {
     super();
     this.state = {
-      data: []
+      data: [],
+      send_data,
     };
   }
 
+  handleSort = (index, value) => event => {
+    console.log(value);
+    var year = value;
+    this.setState({ year: value });
+  };
+
   componentDidMount() {
     Tabletop.init({
-      key: "1kGawtJVtMNaAExb_nEqauE79cTAIzcWdJwUGY0JIYaI",
+      key: "1hov_vf4QAoolGNtRh4whSunYidBp106pFLO4pikre8s",
       callback: googleData => {
+        console.log("google sheet data --->", googleData);
         this.setState({
           data: googleData
         });
       },
       simpleSheet: true
     });
+    this.setState({ year: '2020' });
   }
-  
   render() {
     const { data } = this.state;
+    var options = [];
+    var prev = "";
+    data.forEach(obj => {
+      var dateD = obj.Date;
+      var lastFour = dateD.substring(dateD.length - 4, dateD.length);
+      if (prev != lastFour) {
+        options.push(lastFour);
+        prev = lastFour;
+      }
+    });
+    console.log(Array.from(options));
     return (
       <div>
-        
         <section className="colorlib-experience" data-section="timeline">
           <div className="colorlib-narrow-content">
             <div className="row">
@@ -39,92 +58,29 @@ export default class Timeline extends Component {
                 <span className="heading-meta">ข้อมูลด้าน</span>
                 <h2 className="colorlib-heading animate-box">
                   การปฏิบัติงานและกิจกรรมที่ได้เข้าร่วม
+                  <div></div>
                 </h2>
               </div>
             </div>
-            <div className="row">
-              <div className="col-md-12">
-                <div className="timeline-centered">
-                  <article
-                    className="timeline-entry animate-box"
-                    data-animate-effect="fadeInTop"
-                  >
-                    {data.map(obj => {
-                      var im1 = obj.Picture1.replace(
-                        "open?",
-                        "uc?export=view&"
-                      );
-                      var im2 = obj.Picture2.replace(
-                        "open?",
-                        "uc?export=view&"
-                      );
-                      var im3 = obj.Picture3.replace(
-                        "open?",
-                        "uc?export=view&"
-                      );
-                      return (
-                        <div key={obj.Title}>
-                          <div className="timeline-entry-inner">
-                            <div className="timeline-icon color-5">
-                              <i className="icon-pen2" />
-                            </div>
-                            <div className="timeline-label">
-                              <h2 className="btn-titled">
-                                {obj.Title} ในวันที่ {obj.Date}
-                              </h2>
-                              <p>{obj.Detail}</p>
-                              <img
-                                className="photo"
-                                alt={obj.Title}
-                                src={im1}
-                              />
-                              <img
-                                className="photo"
-                                alt=""
-                                src={im2}
-                              />
-                              
-                              <img
-                                className="photo"
-                                alt=""
-                                src={im3}
-                              />
-                            </div>
-                          </div>
-                          <br></br>
-                        </div>
-                      );
-                    })}
-                  </article>
-                  <article
-                    className="timeline-entry animate-box"
-                    data-animate-effect="fadeInLeft"
-                  >
-                    <div className="timeline-entry-inner">
-                      <div className="timeline-icon color-5">
-                        <i className="icon-pen2" />
-                      </div>
-                      <div className="timeline-label">
-                        <h2>
-                          เริ่มปฏิบัติราชการวันแรก <span>11 เมษายน 2018</span>
-                        </h2>
-                        <p>
-                          รายงานตัวและเข้ารับราชการในตำแหน่ง ครูผู้ช่วย เอกการสอนคอมพิมเตอร์ โรงเรียนภูเขียว อำเภอภูเขียว จังหวัดชัยภูมิ ในวันที่ 11 เดือนเมษายน พ.ศ. 2561
-                        </p>
-                      </div>
-                    </div>
-                  </article>
-                  <article
-                    className="timeline-entry begin animate-box"
-                    data-animate-effect="fadeInBottom"
-                  >
-                    <div className="timeline-entry-inner">
-                      <div className="timeline-icon color-none"></div>
-                    </div>
-                  </article>
-                </div>
-              </div>
+
+            <div>
+              {options.map((name, index) => (
+                <button
+                  key={index}
+                  className="btn_option"
+                  to="#"
+                  onClick={this.handleSort(index,name)}
+                >
+                  {parseInt(name) + parseInt("543")}
+                </button>
+              ))}
             </div>
+
+            <Timelinerender
+              options={{options}}
+              data={{ data }}
+              year={this.state.year}
+            ></Timelinerender>
           </div>
         </section>
       </div>

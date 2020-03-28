@@ -1,6 +1,6 @@
 {
-  "homepage": "http://akopadung.github.io/my-cv",
-  "name": "my-cv",
+  "homepage": "https://akopadung.github.io/online/",
+  "name": "anurak-cv",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -9,11 +9,14 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
+    "fast-deep-equal": "^3.1.1",
     "react": "^16.13.1",
     "react-animations": "^1.0.0",
+    "react-bnb-gallery": "^1.1.9",
     "react-dom": "^16.13.1",
     "react-image-mapper": "0.0.15",
     "react-lazy-load-image-component": "^1.4.1",
+    "react-native": "^0.61.5",
     "react-scripts": "3.4.1",
     "tabletop": "^1.6.2"
   },

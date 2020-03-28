@@ -1,7 +1,26 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Deploy to Github
 
+List your existing remotes in order to get the name of the remote you want to change.
+$ git remote -v
+> origin  git@github.com:USERNAME/REPOSITORY.git (fetch)
+> origin  git@github.com:USERNAME/REPOSITORY.git (push)
+Change your remote's URL from SSH to HTTPS with the git remote set-url command.
+$ git remote set-url origin https://github.com/USERNAME/REPOSITORY.git
+
+
+git remote add origin https://github.com/ชื่อผู้ใช้/react-tutorial.git
+git config --global user.email ""         
+git config --global user.name ""
+git add .     
+git commit -m 'Add your commit message'
+git push -u origin master
+npm run deploy    
+npm install gh-pages --save  
+
+## Available Scripts
+npm install gh-pages --save
 In the project directory, you can run:
 
 ### `npm start`
