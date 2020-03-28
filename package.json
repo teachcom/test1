@@ -1,5 +1,5 @@
 {
-  "homepage": "https://akopadung.github.io/online/",
+  "homepage": "https://akopadung.github.io/test2/",
   "name": "anurak-cv",
   "version": "0.1.0",
   "private": true,
@@ -17,7 +17,11 @@
     "react-image-mapper": "0.0.15",
     "react-lazy-load-image-component": "^1.4.1",
     "react-native": "^0.61.5",
+    "react-native-fetch": "^2.0.0",
+    "react-new-window": "^0.1.2",
+    "react-photo-gallery": "^8.0.0",
     "react-scripts": "3.4.1",
+    "react-tiny-link": "^3.2.0",
     "tabletop": "^1.6.2"
   },
   "scripts": {

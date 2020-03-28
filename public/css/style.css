@@ -435,6 +435,35 @@ body.offcanvas {
       padding-top: 5em;
       padding-bottom: 8em; } }
 
+      .colorlib-contact {
+  padding-top: 2em;
+  padding-bottom: 2em;
+  clear: both;
+  width: 100%;
+  display: block; }
+  @media screen and (max-width: 768px) {
+    .colorlib-experience,
+    .colorlib-skills,
+    .colorlib-education,
+    .colorlib-blog,
+    .colorlib-work,
+    .colorlib-about,
+    .colorlib-services,
+    .colorlib-contact {
+      padding-top: 5em;
+      padding-bottom: 8em; } }
+.colorlib_training,
+.colorlib_award {
+        padding-top: 2em;
+        padding-bottom: 2em;
+        clear: both;
+        width: 100%;
+        display: block; }
+        @media screen and (max-width: 1208px) {
+          .colorlib_training,
+.colorlib_award  {
+            padding-top: 5em;
+            padding-bottom: 8em; } }
 .author-img {
   background-size: cover;
   background-position: center center;
@@ -1481,3 +1510,7 @@ margin-left: 7px;}
 
 .js .animate-box {
   opacity: 0; }
+
+  .colorlib_training_icon{
+    width: 50%;
+  }

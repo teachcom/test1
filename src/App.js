@@ -4,6 +4,7 @@ import Sidebar from './components/sidebar'
 import Introduction from './components/introduction'
 import About from './components/about'
 import Timeline from './components/timeline'
+import Training from './components/training'
 
 class App extends Component {
   render() {
@@ -14,6 +15,7 @@ class App extends Component {
 				<div id="colorlib-main">
 					<Introduction></Introduction>
 					<About></About>
+          <Training></Training>
           <Timeline></Timeline>
           	</div>
       	</div>

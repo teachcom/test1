@@ -4,25 +4,25 @@ import Tabletop from "tabletop";
 import Timelinerender from "./timelinerender";
 
 var send_data = [];
-var year = '';
+var year = '2020';
 export default class Timeline extends Component {
   constructor() {
     super();
     this.state = {
       data: [],
       send_data,
+      year,
     };
   }
 
   handleSort = (index, value) => event => {
-    console.log(value);
     var year = value;
     this.setState({ year: value });
   };
 
   componentDidMount() {
     Tabletop.init({
-      key: "1hov_vf4QAoolGNtRh4whSunYidBp106pFLO4pikre8s",
+      key: "1Z9qSxEV7ON3l20jYbvn6XxiAxN6mhXWE-x-vaaAQcAA",
       callback: googleData => {
         console.log("google sheet data --->", googleData);
         this.setState({
@@ -31,8 +31,8 @@ export default class Timeline extends Component {
       },
       simpleSheet: true
     });
-    this.setState({ year: '2020' });
   }
+
   render() {
     const { data } = this.state;
     var options = [];
@@ -40,12 +40,14 @@ export default class Timeline extends Component {
     data.forEach(obj => {
       var dateD = obj.Date;
       var lastFour = dateD.substring(dateD.length - 4, dateD.length);
-      if (prev != lastFour) {
+      if (prev !== lastFour) {
         options.push(lastFour);
         prev = lastFour;
       }
     });
     console.log(Array.from(options));
+    console.log(data);
+    console.log(this.state.year);
     return (
       <div>
         <section className="colorlib-experience" data-section="timeline">
@@ -75,10 +77,8 @@ export default class Timeline extends Component {
                 </button>
               ))}
             </div>
-
             <Timelinerender
-              options={{options}}
-              data={{ data }}
+              data={{data}}
               year={this.state.year}
             ></Timelinerender>
           </div>

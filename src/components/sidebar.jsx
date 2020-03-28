@@ -14,8 +14,7 @@ export default class Sidebar extends Component {
               <div className="author-img" style={{backgroundImage: `url(${profile__image})`}}/>
               <h2 id="colorlib-logo"><a href="index.html">นายอนุรักษ์ โคผดุง</a></h2>
               <h3 id="colorlib-logo-15">Anurak Khophadung</h3>
-              <h3 id="colorlib-logo-10">กลุ่มสาระการเรียนรู้วิทยาศาสตร์และเทคโนโลยี</h3>
-              <h3 id="colorlib-logo-10">โรงเรียนภูเขียว อ.ภูเขียว จ.ชัยภูมิ</h3>
+              <h3 id="colorlib-logo-10" style={{fontSize:8}}>กลุ่มสาระการเรียนรู้วิทยาศาสตร์และเทคโนโลยี โรงเรียนภูเขียว</h3>
               <span className="email"><i className="icon-mail"></i> anurak.k@phukhieo.ac.th</span>
             </div>
             <br></br>
@@ -26,6 +25,7 @@ export default class Sidebar extends Component {
                   <li><a href="#about" data-nav-section="about">ข้อมูลทั่วไป</a></li>
                   {/*<li><a href="#" data-nav-section="projects">Projects</a></li>
                   <li><a href="#" data-nav-section="blog">Blog</a></li>*/}
+                  <li><a href="#training" data-nav-section="training">การพัฒนาตนเอง</a></li>
                   <li><a href="#timeline" data-nav-section="timeline">การปฏิบัติงาน</a></li>
                 </ul>
               </div>

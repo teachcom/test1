@@ -232,6 +232,12 @@
   text-align: left;
 }
 
+
+.table__object td{
+  vertical-align: middle;
+  padding-left: 20px;
+  text-align: left;
+}
 .App-header {
   background-color: rgba(0, 167, 209, 0.5);
   min-height: 100vh;
