@@ -4,20 +4,16 @@ import Tabletop from "tabletop";
 import Object from "./object";
 
 var year = "2020";
-
+var id = '';
 export default class Training extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       data: [],
-      year
+      year,
+      id: this.props.id
     };
   }
-
-  handleSort = (index, value) => event => {
-    var year = value;
-    this.setState({ year: value });
-  };
 
   componentDidMount() {
     Tabletop.init({
@@ -31,6 +27,11 @@ export default class Training extends Component {
       simpleSheet: true
     });
   }
+
+  handleSortTraining = (value) => event => {
+    this.setState({ year: value});
+  };
+
   render() {
     const { data } = this.state;
     var options = [];
@@ -50,10 +51,11 @@ export default class Training extends Component {
       }
     });
     console.log(Array.from(options));
+    console.log(this.props.id)
     return (
       <div>
-        <section className="colorlib_training" data-section="training">
-          <div className="colorlib-narrow-content" style={{ display: "block" }}>
+        <section className="colorlib_training" data-section="blog">
+         <div className="colorlib-narrow-content" style={{ display: "block" }}>
             <div className="row">
               <div
                 className="col-md-6 col-md-offset-3 col-md-pull-3 animate-box"
@@ -61,18 +63,7 @@ export default class Training extends Component {
               >
                 <span className="heading-meta">ผลงาน</span>
                 <h2 className="colorlib-heading">และการฝึกอบรม</h2>
-                  <div>
-                    {options.map((name, index) => (
-                      <button
-                        key={index}
-                        className="btn_option"
-                        to="#"
-                        onClick={this.handleSort(index, name)}
-                      >
-                        {parseInt(name) + parseInt("543")}
-                      </button>
-                    ))}
-                  </div>
+                  
               </div>
             </div>
             <div className="row row-pt-md">
@@ -96,6 +87,18 @@ export default class Training extends Component {
                       >
                         ข้อมูลปี {parseInt(this.state.year) + 543}
                       </p>
+                      <div>
+                    {options.map((name, index) => (
+                      <button
+                        key={index}
+                        className="btn_option"
+                        to="#"
+                        onClick={this.handleSortTraining(name)}
+                      >
+                        {parseInt(name) + parseInt("543")}
+                      </button>
+                    ))}
+                  </div>
                     </div>
                   </span>
                   <Object
@@ -106,7 +109,7 @@ export default class Training extends Component {
               </div>
             </div>
           </div>
-        </section>
+                    </section> 
       </div>
     );
   }
