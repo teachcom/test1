@@ -176,8 +176,7 @@ export default class About extends Component {
                   </span>
                   <div className="desc">
                     <h3>ด้านงานสอน</h3>
-                    <p>วิทยาการคำนวณ<br></br>
-                    การออกแบบและเทคโนโลยี</p>
+                    <a href="https://akopadung.github.io/online/">แฟ้มสะสมผลงาน</a>
                   </div>
                 </div>
               </div>

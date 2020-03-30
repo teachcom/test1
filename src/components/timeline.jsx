@@ -1,65 +1,29 @@
 import React, { Component } from "react";
-import "./../App.css";
+import "../App.css";
 import Tabletop from "tabletop";
 import Timelinerender from "./timelinerender";
 import Training from "./training";
 
-
+var year = "2020";
 export default class Timeline extends Component {
   constructor() {
     super();
     this.state = {
-      data: [],
       year,
       show: false
     };
   }
 
-  handleSort = (id, value) => event => {
-    this.setState({ year: value, id: id });
+  handleSort = (value) => event => {
+    this.setState({ year: value})
   };
 
-  componentDidMount() {
-    Tabletop.init({
-      key: "1Z9qSxEV7ON3l20jYbvn6XxiAxN6mhXWE-x-vaaAQcAA",
-      callback: googleData => {
-        console.log("google sheet data --->", googleData);
-        this.setState({
-          data: googleData
-        });
-      },
-      simpleSheet: true
-    });
-
-    console.log("did mount");
-  }
-
-  componentWillMount() {
-    Tabletop.init({
-      key: "1Z9qSxEV7ON3l20jYbvn6XxiAxN6mhXWE-x-vaaAQcAA",
-      callback: googleData => {
-        console.log("google sheet data --->", googleData);
-        this.setState({
-          data: googleData
-        });
-      },
-      simpleSheet: true
-    });
-    
-    console.log("will mount");
-  }
-
-  componentWillUnmount() {
-    console.warn("component is hidding");
-    this.state = initialState;
-    this.setState(initialState);
-  }
-
   render() {
-    const { data } = this.state;
+    const { timeline_data } = this.props.timeline_data;
+    const { training_data } = this.props.training_data;
     var options = [];
     var prev = "";
-    data.forEach(obj => {
+    timeline_data.map(obj => {
       var dateD = obj.Date;
       var lastFour = dateD.substring(dateD.length - 4, dateD.length);
       if (prev !== lastFour) {
@@ -68,7 +32,8 @@ export default class Timeline extends Component {
       }
     });
     console.log(Array.from(options));
-    console.log(data);
+    console.log("timeline data ",timeline_data);
+    console.log("training data ",training_data);
     console.log(this.state.year);
     return (
       <div>
@@ -91,7 +56,7 @@ export default class Timeline extends Component {
             >
               Toggle Childe
             </button>
-            {this.state.show? <Training /> :null}
+            {this.state.show? <Training a_training_data={{training_data}} /> :null}
             
           </div>
                 </h2>
@@ -104,7 +69,7 @@ export default class Timeline extends Component {
                   key={index}
                   className="btn_option"
                   to="#"
-                  onClick={this.handleSort(1, name)}
+                  onClick={this.handleSort(name)}
                 >
                   {parseInt(name) + parseInt("543")}
                 </button>
@@ -117,11 +82,11 @@ export default class Timeline extends Component {
               className="timeline-entry animate-box"
               data-animate-effect="fadeInTop"
             >
-              {data.map(obj => {
+              {timeline_data.map(obj => {
                 var dateD = obj.Date;
                 var lastFour = dateD.substring(dateD.length - 4, dateD.length);
                 var firstOne = dateD.substring(0, dateD.length - 4);
-                if (lastFour === year) {
+                if (lastFour === this.state.year) {
                   var im1 = obj.Picture1.replace("open?", "uc?export=view&");
                   var im2 = obj.Picture2.replace("open?", "uc?export=view&");
                   var im3 = obj.Picture3.replace("open?", "uc?export=view&");
@@ -247,15 +212,3 @@ export default class Timeline extends Component {
     );
   }
 }
-
-
-
-
-
-var data = [];
-var year = "2020";
-var id = "";
-const initialState = {
-    data: [],
-    year: ""
-};

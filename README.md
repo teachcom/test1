@@ -1,9 +1,9 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Deploy to Github
-
+npm install --save npm-git-install
 List your existing remotes in order to get the name of the remote you want to change.
-$ git remote -v
+git remote -v
 > origin  git@github.com:USERNAME/REPOSITORY.git (fetch)
 > origin  git@github.com:USERNAME/REPOSITORY.git (push)
 Change your remote's URL from SSH to HTTPS with the git remote set-url command.

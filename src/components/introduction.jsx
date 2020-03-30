@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import "./../App.css";
+import "../App.css";
 import img_bg_slide0 from './images/img_bg_slide0.jpg'
 import img_bg_slide1 from './images/img_bg_slide_2.jpg'
 import img_bg_slide2 from './images/img_bg_slide_1.JPG'
@@ -20,7 +20,11 @@ export default class Introduction extends Component {
                       <div className="slider-text-inner js-fullheight">
                         <div className="desc">
                           <h1>สวัสดีครับ <br />ผมชื่ออนุรักษ์</h1>
-                          <p><a className="btn btn-primary btn-learn" href="#" target="_blank" rel="noopener noreferrer">SAR<i className="icon-download4" /></a></p>
+          <div style={{display:'inline:block'}}>
+                          <a className="btn btn-primary btn-learn" href="#" target="_blank" rel="noopener noreferrer">SAR<i className="icon-download4" /></a>
+                          <a className="btn btn-primary btn-learn" href="#" target="_blank" rel="noopener noreferrer">SAR<i className="icon-download4" /></a>
+                          <a className="btn btn-primary btn-learn" href="#" target="_blank" rel="noopener noreferrer">SAR<i className="icon-download4" /></a>
+                          </div>
                         </div>
                       </div>
                     </div>

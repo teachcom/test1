@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./../App.css";
+import "../App.css";
 
 var photo = [];
 export default class Timelinerender extends Component {
